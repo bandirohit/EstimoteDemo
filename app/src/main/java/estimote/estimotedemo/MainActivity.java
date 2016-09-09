@@ -43,13 +43,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         distance = (TextView)findViewById(R.id.distance);
         mySound = MediaPlayer.create(this, R.raw.imperial_march);
-        Log.d("Rohit mesage", "oncreate");
-        distance.setText("hello rohit");
+        Log.d("Rohit Message", "oncreate");
         beaconManager = new BeaconManager(this);
         region = new Region("ranged region",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),64286, 51833);
 
-        distance.setText("Rohit");
+        distance.setText("Welcome");
 
         beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
             @Override
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBeaconsDiscovered(Region region, List<Beacon> list)
             {
-                Log.d("Rohit mesage", "onBeaconsDiscovered");
+                Log.d("Rohit Message", "onBeaconsDiscovered");
                 if (!list.isEmpty())
                 {
 
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     distance.setText(Integer.toString(dist));
                     if (dist <= 65)
                     {
-                        /*
+
                         //mySound.start();
                         distance.setTextColor(Color.GREEN);
                         if(mySound.isPlaying() != true)
@@ -83,13 +82,13 @@ public class MainActivity extends AppCompatActivity {
                             mySound.seekTo(0);
                             mySound.start();
                         }
-                        Log.d("Rohit Message", "in range");
+                        Log.d("Rohit Message", "Estimote in the range");
                         if (dist <= 50)
                         {
                             distance.setTextColor(Color.RED);
                             mySound.pause();
                         }
-                        */
+
 
                         /*
                         try{
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         }catch(InterruptedException e){
 
                         }
-                        */
+
                         try {
                             Log.d("Rohit ...","trying");
                             Process process = Runtime.getRuntime().exec("su");
@@ -123,24 +122,16 @@ public class MainActivity extends AppCompatActivity {
                         } catch (IOException e) {
 
                         }
-
+                       */
                     }
                     else
                     {
-                        /*
                         distance.setTextColor(Color.RED);
                         if(mySound.isPlaying() == true)
                         {
                             mySound.pause();
                         }
-                        */
-                        String cmd = "echo 0 > /sys/class/gpio/gpio915/value";
-                        Runtime run = Runtime.getRuntime();
-                        try {
-                            Process pr = run.exec(cmd);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+
                     }
 
                 }
